@@ -1,0 +1,12 @@
+<launch>
+  <node type="point_cloud2_assembler" pkg="laser_assembler" output="screen"
+        name="my_assembler">
+    <remap from="filteredPointCloud" to="my_cloud_in"/>
+    <param name="max_clouds" type="int" value="400" />
+    <param name="fixed_frame" type="string" value="map" />
+  </node>
+
+
+	
+	<node pkg="tf" type="static_transform_publisher" name="baselink_laser_broadcaster" args="0 0 0 0 0 0 map odom_combined 10"/>
+</launch>
