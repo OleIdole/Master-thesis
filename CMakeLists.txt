@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(master-thesis)
+project(master_thesis)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 add_compile_options(-std=c++11)
@@ -114,7 +114,7 @@ generate_messages(
 ## DEPENDS: system dependencies of this project that dependent projects also need
  catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES master-thesis
+#  LIBRARIES master_thesis
   CATKIN_DEPENDS roscpp rospy std_msgs urdf xacro
 #  DEPENDS system_lib
 )
@@ -137,7 +137,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/master-thesis.cpp
+#   src/${PROJECT_NAME}/master_thesis.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -211,7 +211,7 @@ install(DIRECTORY meshes rviz urdf
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_master-thesis.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_master_thesis.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
