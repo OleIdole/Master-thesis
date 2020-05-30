@@ -2,7 +2,7 @@
   <arg name="model" default="thesis" doc="model type [burger, waffle, waffle_pi, thesis]"/>
   <arg name="multi_robot_name" default=""/>
 
-  <include file="$(find my_package)/launch/includes/description.launch.xml">
+  <include file="$(find master-thesis)/launch/includes/description.launch.xml">
     <arg name="model" value="$(arg model)" />
   </include>
 

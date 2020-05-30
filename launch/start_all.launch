@@ -1,12 +1,12 @@
 <launch>
   <!-- Slam Gmapping -->
-	<include file="$(find my_package)/launch/turtlebot3_slam.launch" />
+	<include file="$(find master-thesis)/launch/turtlebot3_slam.launch" />
 
   <!-- Measurement processing node -->
-	<node pkg="my_package" type="sonar_lidar_simulation_node.py" name="sonar_lidar_simulation_node" output="screen"/>
+	<node pkg="master-thesis" type="sonar_lidar_simulation_node.py" name="sonar_lidar_simulation_node" output="screen"/>
 
 	<!-- Water classification node PLACEHOLDER -->
 
 	<!-- Pointcloud -->
-	<node pkg="my_package" type="laser2pc.py" name="laser2pc" output="screen"/>
+	<node pkg="master-thesis" type="laser2pc.py" name="laser2pc" output="screen"/>
 </launch>

@@ -7,7 +7,7 @@ from sensor_msgs.msg import LaserScan, Range
 from math import *
 import numpy as np
 import copy
-from my_package.msg import LaserScanFiltered
+from master-thesis.msg import LaserScanFiltered
 
 class sonar_lidar_scan_node:
     def __init__(self):

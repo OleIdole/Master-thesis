@@ -7,7 +7,7 @@ from sensor_msgs.msg import LaserScan
 from math import *
 import numpy as np
 import copy
-from my_package.msg import LaserScanFiltered
+from master-thesis.msg import LaserScanFiltered
 
 #ranges_filter = []
 #intensities_filter = []

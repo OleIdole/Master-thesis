@@ -7,7 +7,7 @@ from sensor_msgs.msg import LaserScan
 from math import *
 import numpy as np
 import copy
-from my_package.msg import LaserScanFiltered
+from master-thesis.msg import LaserScanFiltered
 from turtlebot3_msgs.msg import SensorState
 
 class sonar_lidar_scan_node:
