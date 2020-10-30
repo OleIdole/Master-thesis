@@ -21,7 +21,6 @@ find_package(catkin REQUIRED COMPONENTS
 find_package( Boost REQUIRED COMPONENTS program_options regex )
 #include_directories( ${Boost_INCLUDE_DIRS} )
 
-
 #find_package(PCL 1.7 REQUIRED COMPONENTS)
 
 ## System dependencies are found with CMake's conventions
@@ -219,12 +218,13 @@ install(DIRECTORY meshes rviz urdf
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
+find_package(octomap REQUIRED)
 
 # Macro builds each node, assuming they all have the same requirements
 macro(build_node name)
     add_executable(${name} src/${name}.cpp)
-    target_include_directories(${name} PUBLIC ${catkin_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS} include)
-    target_link_libraries(${name} PUBLIC ${catkin_LIBRARIES} ${OpenCV_LIBS})
+    target_include_directories(${name} PUBLIC ${catkin_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS} ${OCTOMAP_INCLUDE_DIRS} include)
+    target_link_libraries(${name} PUBLIC ${catkin_LIBRARIES} ${OpenCV_LIBS} ${OCTOMAP_LIBRARIES})
     target_compile_options(${name} PUBLIC ${PRIVATE_BUILD_FLAGS})
 endmacro()
 # Build each node

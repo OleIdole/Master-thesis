@@ -7,6 +7,9 @@
 
 	<!-- Water classification node PLACEHOLDER -->
 
-	<!-- Pointcloud -->
+	<!-- Pointcloud2 -->
 	<node pkg="master_thesis" type="laser2pc.py" name="laser2pc" output="screen"/>
+
+	<!-- Octomap -->
+	<include file="$(find master_thesis)/launch/octomap.launch" />
 </launch>

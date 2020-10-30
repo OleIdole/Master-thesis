@@ -1,0 +1,44 @@
+<launch>
+	<!-- Slam Gmapping -->
+	<include file="$(find master_thesis)/launch/turtlebot3_slam.launch">
+		<arg name="rviz_config" value="tb3_octomap" />
+	</include>
+
+	<!-- Octomap for world -->
+    <node pkg="octomap_server" type="octomap_server_node" name="octomap_server_world">
+        <param name="resolution" value="0.05" />
+
+        <!-- fixed map frame -->
+        <param name="frame_id" type="string" value="odom" />
+	
+	    <param name="sensor_model/max_range" value="5.0" />
+        <param name="pointcloud_max_z" value="1.2" />
+        <param name="pointcloud_min_z" value="-0.15" />
+
+        <!-- data source to integrate (PointCloud2) -->
+        <remap from="cloud_in" to="/world_pc" />
+        <remap from="/occupied_cells_vis_array" to="/marker_array_world" />
+    </node>
+
+	<!-- Octomap for water -->
+	<node pkg="octomap_server" type="octomap_server_node" name="octomap_server_water">
+        <param name="resolution" value="0.05" />
+
+        <!-- fixed map frame -->
+        <param name="frame_id" type="string" value="odom" />
+	
+	    <param name="sensor_model/max_range" value="5.0" />
+        <param name="pointcloud_max_z" value="1.2" />
+        <param name="pointcloud_min_z" value="-0.15" />
+
+        <!-- data source to integrate (PointCloud2) -->
+        <remap from="cloud_in" to="/water_pc" />
+        <remap from="/occupied_cells_vis_array" to="/marker_array_water" />
+    </node>
+
+	<!-- Node for converting scans to pc2 and publish to octomap, and recolour water marker_array -->
+	<node pkg="master_thesis" type="tb3_mapping_node.py" name="tb3_mapping_node" output="screen"/>
+
+	<!-- Water classification node (process measurements and send pc2 to 2nd Octomap server) -->
+	<node pkg="master_thesis" type="tb3_classification_node.py" name="tb3_classification_node" output="screen"/>
+</launch>

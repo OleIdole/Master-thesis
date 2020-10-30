@@ -11,11 +11,13 @@ from laser_geometry import LaserProjection
 class Laser2PC():
     def __init__(self):
         self.laserProj = LaserProjection()
+        #self.pcPub = rospy.Publisher("/laserPointCloud", pc2, queue_size=1)
         self.pcPub = rospy.Publisher("/laserPointCloud", pc2, queue_size=1)
         self.laserSub = rospy.Subscriber("/scan", LaserScan, self.laserCallback)
 
     def laserCallback(self, data):
         cloud_out = self.laserProj.projectLaser(data)
+        #print(len(data.ranges))
         self.pcPub.publish(cloud_out)
 
 if __name__ == '__main__':
